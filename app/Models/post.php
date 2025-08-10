@@ -16,6 +16,17 @@ class Post extends Model
         'designation',
         'phone',
     ];
+     public function attendances()
+    {
+        return $this->hasMany(Attendance::class, 'staff_id');
+    }
+   public function performances()
+{
+    return $this->hasMany(Performance::class, 'staff_id');
+}
+
+
+
 }
 
 

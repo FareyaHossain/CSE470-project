@@ -37,6 +37,7 @@
             <th class="px-4 py-2 border">End Date</th>
             <th class="px-4 py-2 border">Reason</th>
             <th class="px-4 py-2 border">Status</th>
+            <th class="px-4 py-2">Recommendation</th>
             <th class="px-4 py-2 border">Action</th>
           </tr>
         </thead>
@@ -47,6 +48,7 @@
               <td class="px-4 py-2 border">{{ $request->start_date }}</td>
               <td class="px-4 py-2 border">{{ $request->end_date }}</td>
               <td class="px-4 py-2 border">{{ $request->reason }}</td>
+              
               <td class="px-4 py-2 border font-semibold">
                 @if($request->status == 'Pending')
                   <span class="text-yellow-600">{{ $request->status }}</span>
@@ -56,6 +58,9 @@
                   <span class="text-red-600">{{ $request->status }}</span>
                 @endif
               </td>
+              <td class="px-4 py-2">
+                  {{ $request->recommendation ?? 'No recommendation' }}
+              </td> 
               <td class="px-4 py-2 border space-x-2">
                 @if($request->status == 'Pending')
                   <form action="{{ route('leave.approve', $request->id) }}" method="POST" class="inline">

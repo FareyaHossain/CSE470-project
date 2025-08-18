@@ -41,6 +41,17 @@ class LeaveRequestController extends Controller
     public function index()
     {
         $requests = LeaveRequest::with('staff')->orderBy('created_at', 'desc')->get();
+
+        // Calculate recommendation for each leave request
+        foreach ($requests as $request) {
+            $leaveDays = now()->diffInDays($request->start_date, $request->end_date) + 1; // Include both start and end date
+            if ($leaveDays > 5) {
+                $request->recommendation = 'Needs Manager Approval';
+            } else {
+                $request->recommendation = 'Auto-Approved';
+            }
+        }
+
         return view('manage', compact('requests'));
     }
 
@@ -68,3 +79,4 @@ class LeaveRequestController extends Controller
         return back()->with('error', 'Leave denied.');
     }
 }
+

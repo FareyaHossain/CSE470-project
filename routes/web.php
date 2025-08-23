@@ -72,16 +72,17 @@ Route::get('/chatbot', [ChatbotController::class, 'index']);
 Route::post('/chatbot/message', [ChatbotController::class, 'handle']);
 
 
-
+// email
 
 Route::get('/test-email', function () {
     $details = [
-        'subject' => 'Test Email',
-        'title' => 'This is a test',
-        'body' => 'This is a test email for staff notification.'
+        'subject' => 'Important Announcement: Upcoming Holiday.',
+        'title' => 'Eid Holiday',
+        'body' => 'Dear staffs, Eid Holidays will start  from 15-20 August.'
+                 
     ];
 
-    Mail::to('fareyahossain835@gmail.com')->send(new \App\Mail\StaffNotificationMail($details));
+    Mail::to('staffmanagementhub@gmail.com')->send(new \App\Mail\StaffNotificationMail($details));
     return 'Email sent!';
 });
 

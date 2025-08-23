@@ -43,7 +43,7 @@ class PerformanceController extends Controller
         $staff = Post::findOrFail($staffId);
         $performances = $staff->performances()->get();
 
-        // Example: Calculate average score and generate simple AI-like comments
+        // Example: Calculate average score and generate AI-like comments
         $averageScore = $performances->avg('score');
 
         $performanceSummary = $this->generateAiReport($averageScore);
@@ -51,7 +51,7 @@ class PerformanceController extends Controller
         return view('performances.report', compact('staff', 'performances', 'averageScore', 'performanceSummary'));
     }
 
-    // Simple AI logic for performance report
+    // AI logic for performance report
     private function generateAiReport($avgScore)
     {
         if ($avgScore >= 8) {
@@ -74,7 +74,7 @@ class PerformanceController extends Controller
         // Average performance score affects bonus: 
         $avgScore = $staff->performances()->avg('score') ?? 0;
 
-        // Simple formula: bonus = 10% of base salary if avgScore >= 8, 5% if >=5 else 0
+        // bonus formula: bonus = 10% of base salary if avgScore >= 8, 5% if >=5 else 0
         $bonus = 0;
         if ($avgScore >= 8) {
             $bonus = $baseSalary * 0.1;

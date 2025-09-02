@@ -29,14 +29,15 @@
         <tbody>
           @forelse ($performances as $performance)
           <tr>
-            <td class="border border-gray-300 px-4 py-2">{{ $performance->staff->name }}</td>
+            <td class="border border-gray-300 px-4 py-2">{{ $performance->staff->name ?? 'Staff deleted'}}</td>
             <td class="border border-gray-300 px-4 py-2">{{ $performance->performance_metric }}</td>
             <td class="border border-gray-300 px-4 py-2">{{ $performance->score }}</td>
             <td class="border border-gray-300 px-4 py-2">{{ $performance->date->format('Y-m-d') }}</td>
             <td class="border border-gray-300 px-4 py-2">
-              <a href="{{ route('performances.report', $performance->staff->id) }}" class="text-blue-600 hover:underline mr-3">Report</a>
-              <a href="{{ route('performances.salary', $performance->staff->id) }}" class="text-green-600 hover:underline">Salary</a>
+              <a href="{{ route('performances.report', $performance->staff->id ?? 'Staff deleted') }}" class="text-blue-600 hover:underline mr-3">Report</a>
+              <a href="{{ route('performances.salary', $performance->staff->id ?? 'Staff deleted') }}" class="text-green-600 hover:underline">Salary</a>
             </td>
+            
           </tr>
           @empty
           <tr>

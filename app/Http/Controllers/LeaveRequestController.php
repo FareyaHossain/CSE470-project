@@ -44,13 +44,17 @@ class LeaveRequestController extends Controller
 
         // Calculate recommendation for each leave request
         foreach ($requests as $request) {
-            $leaveDays = now()->diffInDays($request->start_date, $request->end_date) + 1; // Include both start and end date
-            if ($leaveDays > 5) {
-                $request->recommendation = 'Needs Manager Approval';
-            } else {
-                $request->recommendation = 'Auto-Approved';
-            }
-        }
+              $start = \Carbon\Carbon::parse($request->start_date);
+              $end   = \Carbon\Carbon::parse($request->end_date);
+              $leaveDays = $start->diffInDays($end) + 1; // include both start and end date
+
+              if ($leaveDays > 5) {
+                  $request->recommendation = 'Needs Manager Approval';
+              } else {
+                 $request->recommendation = 'Auto-Approved';
+              }
+         }
+
 
         return view('manage', compact('requests'));
     }

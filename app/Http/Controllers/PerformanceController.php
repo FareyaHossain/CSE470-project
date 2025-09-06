@@ -49,6 +49,7 @@ class PerformanceController extends Controller
         $performanceSummary = $this->generateAiReport($averageScore);
 
         return view('performances.report', compact('staff', 'performances', 'averageScore', 'performanceSummary'));
+        
     }
 
     // AI logic for performance report

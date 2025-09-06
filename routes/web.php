@@ -9,6 +9,9 @@ use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\EmailNotificationController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StaffNotificationMail;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +23,35 @@ use App\Mail\StaffNotificationMail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Registration
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// OTP Verification
+Route::get('/otp', [AuthController::class, 'showOtpForm'])->name('otp.form');
+Route::post('/otp', [AuthController::class, 'verifyOtp'])->name('otp.verify');
+
+// Login
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
+// Logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Dashboard (protected by auth middleware)
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', function () {
+    $posts = Post::all(); // fetch all staff
+    return view('dashboard', compact('posts'));
+})->middleware('auth')->name('dashboard');
+
 // handle add staff
 Route::get('/', function () {
     return view('welcome',['posts'=>post::all()]);
-})->name('home');
+})->name('dashboard');
+
+Route::resource('staff', PostController::class)->middleware('auth');
 
 Route::get('/create', [postController::class, 'create']);
 Route::post('/store', [postController::class, 'ourfilestore'])->name('store');
@@ -35,6 +63,8 @@ Route::get('/edit/{id}', [postController::class, 'editData'])->name('edit');
 
 // Handle the form update
 Route::post('/update/{id}', [postController::class, 'updateData'])->name('update');
+Route::put('/update/{id}', [PostController::class, 'updateData'])->name('update');
+Route::get('/update/{id}', [PostController::class, 'updateData'])->name('update');
 
 //Handle the delete form
 Route::delete('/delete/{id}', [PostController::class, 'deleteData'])->name('delete');
@@ -62,7 +92,7 @@ Route::prefix('performances')->group(function () {
     Route::get('/', [PerformanceController::class, 'index'])->name('performances.index');
     Route::get('/create', [PerformanceController::class, 'create'])->name('performances.create');
     Route::post('/', [PerformanceController::class, 'store'])->name('performances.store');
-
+    
     Route::get('/report/{staffId}', [PerformanceController::class, 'report'])->name('performances.report');
     Route::get('/salary/{staffId}', [PerformanceController::class, 'calculateSalary'])->name('performances.salary');
 });
@@ -89,6 +119,5 @@ Route::get('/test-email', function () {
 });
 
 
-
-
+   
 

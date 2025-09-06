@@ -55,7 +55,7 @@ class AttendanceController extends Controller
             'status' => $request->status,
         ]);
 
-        $month = Carbon::parse($request->date)->month;
+        $month = Carbon::parse($request->date)->month; // carbon convert the date str from req
         $year = Carbon::parse($request->date)->year;
 
         return redirect()->route('attendance.monthly_report', [

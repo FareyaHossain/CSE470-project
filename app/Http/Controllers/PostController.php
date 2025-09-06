@@ -32,7 +32,7 @@ class PostController extends Controller
         $post->phone = $request->phone;
         $post->save();
 
-        return redirect()->route('home')->with('success', 'Staff created successfully!');
+        return redirect()->route('dashboard')->with('success', 'Staff created successfully!');
     }
 
     // Show the form to edit a specific staff member
@@ -60,7 +60,7 @@ class PostController extends Controller
             'phone' => $request->phone,
         ]);
 
-        return redirect()->route('home')->with('success', 'Staff updated successfully!');
+        return redirect()->route('dashboard')->with('success', 'Staff updated successfully!');
     }
 //delete the staff member.
     public function deleteData($id)
@@ -68,6 +68,7 @@ class PostController extends Controller
     $post = Post::findOrFail($id);
     $post->delete();
 
-    return redirect()->route('home')->with('success', 'Staff deleted successfully!');
+    return redirect()->route('dashboard')->with('success', 'Staff deleted successfully!');
 }
+
 }

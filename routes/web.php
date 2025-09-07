@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\StaffNotificationMail;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,28 +23,7 @@ use App\Http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Registration
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-// OTP Verification
-Route::get('/otp', [AuthController::class, 'showOtpForm'])->name('otp.form');
-Route::post('/otp', [AuthController::class, 'verifyOtp'])->name('otp.verify');
-
-// Login
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-
-// Logout
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
-
-// Dashboard (protected by auth middleware)
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/dashboard', function () {
-    $posts = Post::all(); // fetch all staff
-    return view('dashboard', compact('posts'));
-})->middleware('auth')->name('dashboard');
 
 // handle add staff
 Route::get('/', function () {
@@ -104,20 +83,31 @@ Route::get('/chatbot', [ChatbotController::class, 'index']);
 Route::post('/chatbot/message', [ChatbotController::class, 'handle']);
 
 
-// email
+// Registration
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-Route::get('/test-email', function () {
-    $details = [
-        'subject' => 'Important Announcement: Upcoming Holiday.',
-        'title' => 'Eid Holiday',
-        'body' => 'Dear staffs, Eid Holidays will start  from 15-20 August.'
-                 
-    ];
+// OTP Verification
+Route::get('/otp', [AuthController::class, 'showOtpForm'])->name('otp.form');
+Route::post('/otp', [AuthController::class, 'verifyOtp'])->name('otp.verify');
 
-    Mail::to('staffmanagementhub@gmail.com')->send(new \App\Mail\StaffNotificationMail($details));
-    return 'Email sent!';
-});
+// Login
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
+// Logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Dashboard (protected by auth middleware)
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', function () {
+    $posts = Post::all(); // fetch all staff
+    return view('dashboard', compact('posts'));
+})->middleware('auth')->name('dashboard');
 
 
-   
 
+// automated email notifier
+Route::get('/notifications/create', [NotificationController::class, 'create'])->name('notifications.create');
+Route::post('/notifications/send', [NotificationController::class, 'sendNotification'])->name('notifications.send');

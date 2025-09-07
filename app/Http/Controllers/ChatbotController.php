@@ -17,6 +17,8 @@ class ChatbotController extends Controller
             $response = "To apply for leave, go to the Leave Request page and fill out the form.";
         } elseif (str_contains($message, 'holiday')) {
             $response = "The next holiday is on 15th-20th August (Eid Holiday).";
+         } elseif (str_contains($message, 'hi')) {
+            $response = "hello, welcome to HR chatbot Assistant! How can i help you?.";
         } elseif (str_contains($message, 'balance')) {
             $response = "You have 7 leave days remaining.";
 

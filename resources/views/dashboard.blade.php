@@ -85,7 +85,9 @@
                 <h2 class="text-xl font-semibold mb-4">AI-Powered Communication & Assistance</h2>
                 <div class="space-y-3">
                     <a href="{{ url('/chatbot') }}" class="block px-4 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200">Chatbot HR Assistant</a>
-                    <a href="{{ url('/test-email') }}" class="block px-4 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200">Automated Email Notifier</a>
+                    <!--<a href="{{ url('/test-email') }}" class="block px-4 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200">Automated Email Notifier</a>-->
+                    <a href="{{ url('/notifications/create') }}" class="block px-4 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200">Automated Email Notifier</a>
+                    <!--a href="{{ url('/notifications/send') }}" class="block px-4 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200">Automated Email Notifier</a-->
                 </div>
                 
         

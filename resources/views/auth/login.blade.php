@@ -10,6 +10,7 @@
 
     <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
         <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+        <h2 class="text-2xl font-bold mb-4 text-center">Staff Management Hub</h2>
 
         <form method="POST" action="{{ route('login') }}" class="space-y-4">
             @csrf

@@ -1,3 +1,59 @@
+# Registration:
+<img width="723" height="661" alt="Registration" src="https://github.com/user-attachments/assets/8ff83b24-9509-4f95-b7f2-56504f9f0f50" />
+
+# Otp:
+<img width="447" height="227" alt="OTP" src="https://github.com/user-attachments/assets/bb9c6545-eea7-4958-adaa-12c13cf109ff" />
+
+# Login:
+<img width="597" height="416" alt="Login" src="https://github.com/user-attachments/assets/76d4baac-1abd-458e-b5be-eb93c7b89af7" />
+
+# DashBoard:
+<img width="846" height="918" alt="DashBoard" src="https://github.com/user-attachments/assets/d79f73c8-8d24-4093-8cc0-8ef2eeac9ed6" />
+
+# Add, Edit staff :
+<img width="787" height="652" alt="Add Staff" src="https://github.com/user-attachments/assets/7ad83a3e-d417-432e-ba14-b00a985b6254" />
+
+<img width="776" height="542" alt="Edit Staff" src="https://github.com/user-attachments/assets/1b50f039-4049-4aae-a529-ef7f2ad2ab5a" />
+
+# After Edit a staff Information will be  update  and in the dashboard we see the delete feature , if we click the  delete button staff will be
+# deleted  from the system.
+
+# Add Attendance:
+<img width="757" height="531" alt="Add Atteandance" src="https://github.com/user-attachments/assets/fb670a75-cd59-41fc-8ac4-6ef64badd82d" />
+
+#  Monthly Attendance Report:
+<img width="871" height="447" alt="Monthly Attendance Report" src="https://github.com/user-attachments/assets/905a596f-2fbe-4b86-a936-9e08f24e2852" />
+
+# Monthly Attendance Calculator: 
+
+# Calculate the total working days, present days, leave days, and attendance_ Calculation percentage for each staff member.
+
+# Leave Request System :
+
+<img width="756" height="616" alt="Request Leave" src="https://github.com/user-attachments/assets/40099dd7-1735-45c8-8a4b-80296d0124ae" />
+
+
+# Leave Approval Recommendation : 
+
+<img width="875" height="351" alt="Leave Approval Recommendation" src="https://github.com/user-attachments/assets/4ba856e0-0b06-4ac7-b185-e6833ec44268" />
+
+ 
+# Add performance Data :
+<img width="775" height="720" alt="Add performance Data" src="https://github.com/user-attachments/assets/18ab2450-954f-485c-a05a-7dde5edc323c" />
+
+# Performance Report:
+<img width="775" height="622" alt="Performance Record" src="https://github.com/user-attachments/assets/27c5ff30-6f3d-4a2b-92e1-8e2c34a29d42" />
+
+# Calculate Salary:
+<img width="758" height="277" alt="Calculate Salary" src="https://github.com/user-attachments/assets/cdc5f251-eb41-4814-9b82-33f977d82516" />
+
+# Chatbot  HR  Assistant :
+<img width="795" height="442" alt="Chatbot HR Assistant" src="https://github.com/user-attachments/assets/2fcb5c1b-256c-4e7a-86c6-4121ee7e248b" />
+
+# Automated Email Notifier:
+<img width="742" height="467" alt="Automated Email Notifier" src="https://github.com/user-attachments/assets/79d82307-8551-4282-8f05-62f933389fe0" />
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
